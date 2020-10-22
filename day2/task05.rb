@@ -6,8 +6,7 @@ months = { jan: 31, feb: 28, mar: 31, apr: 30, may: 31, jun: 30, jul: 31, aug: 3
 flag = 1;
 result = 0;
 
-
-def vis_year(year)       #Високосный ли год или нет
+def vis_year(year)       
 	if year % 4 != 0
 		return false
 	elsif year % 100 == 0
@@ -25,13 +24,13 @@ if vis_year(year)
 end
 
 months.each_key do |key|
-	if flag<month
-		result+=months[key]
-		flag+=1
+	if flag < month
+		result += months[key]
+		flag += 1
 	end
 end
 
-result+=day
+result += day
 
 
 

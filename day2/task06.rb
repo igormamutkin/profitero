@@ -5,15 +5,14 @@ array = {}
 all_price = 0
 
 while (true)
-	flag = gets.chomp.to_s
+  flag = gets.chomp.to_s
 	if flag.eql?("стоп")
-		break
+	  break
 	end
-	name << flag
-	price << gets.chomp.to_i
-	amount <<  gets.chomp.to_f
+  name << flag
+  price << gets.chomp.to_i
+  amount <<  gets.chomp.to_f
 end
-
 
 name.length.times do |i|
 	array_prom = {}
@@ -22,12 +21,12 @@ name.length.times do |i|
 end
 
 array.each do |key, value|
-	flag = 0
+  flag = 0
 	value.each do |a, b|
-		flag = a * b
-		all_price+=flag
+	  flag = a * b
+	  all_price += flag
 	end
-	puts "#{key} - #{flag}$"
+  puts "#{key} - #{flag}$"
 end
 
 puts all_price
