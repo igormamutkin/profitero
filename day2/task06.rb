@@ -1,32 +1,30 @@
-name = []
-price = []
-amount = []
-array = {}
+name_list = []
+price_list = []
+amount_list = []
+hash_list = {}
 all_price = 0
 
 while (true)
   flag = gets.chomp.to_s
-	if flag.eql?("стоп")
-	  break
-	end
-  name << flag
-  price << gets.chomp.to_i
-  amount <<  gets.chomp.to_f
+  break if flag.eql?("стоп")
+  name_list << flag
+  price_list << gets.chomp.to_i
+  amount_list <<  gets.chomp.to_f
 end
 
-name.length.times do |i|
-	array_prom = {}
-	array_prom[price[i]] = amount[i]
-	array[name[i]] = array_prom
+name_list.each_with_index do |element, index|
+  array_prom = {}
+  array_prom[price_list[index]] = amount_list[index]
+  hash_list[element] = array_prom
 end
 
-array.each do |key, value|
+hash_list.each do |name, value|
   flag = 0
-	value.each do |a, b|
-	  flag = a * b
-	  all_price += flag
-	end
-  puts "#{key} - #{flag}$"
+  value.each do |price, amount|
+	flag = price * amount
+    all_price += flag
+  end
+  puts "#{name} - #{flag}$"
 end
 
 puts all_price
