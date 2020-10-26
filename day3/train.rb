@@ -3,12 +3,17 @@ require_relative 'route.rb'
 
 class Train
 
+	index_station = 0
+
   def initialize(number, type, number_car)
   	@number = number
-  	@type = type
+    if type.downcase.eql?("грузовой") || type.downcase.eql?("пассажирский")
+      @type = type
+      else
+      puts "Неправильный тип поезда" 
+    end
   	@number_car = number_car  
   	@speed = 0
-  	@index_station
   end
 
   attr_accessor :number, :type, :number_car, :speed, :current_station
@@ -29,15 +34,15 @@ class Train
   	puts "Скорость поезда #{number} - #{@speed}"
   end
 
-  def add_car
+  def add_carriage
   	@number_car+=1 if @speed == 0
   end
 
-  def remove_car
+  def remove_carriage
   	@number_car-=1 if @speed== 0 && @number_car > 1
   end
 
-  def get_car
+  def get_carriage
   	puts "Количество вагонов - #{@number_car}"
   end
 
@@ -46,14 +51,16 @@ class Train
     @current_station = route.all_station[@index_station]
   end	
 
-  def run_ahead(route)
+  def go_next(route)
+  	route.all_station[@index_station].send_train(self)
   	@index_station += 1
-  	@current_station = route.all_station[@index_station] if @index_station < route.all_station.length
+  	@current_station = route.all_station[@index_station].add_train(self) if @index_station < route.all_station.length
   end
 
-  def run_back(route)
+  def go_back(route)
+  	route.all_station[@index_station].send_train(self)
   	@index_station -= 1
-  	@current_station = route.all_station[@index_station] if @index_station >= 0
+  	@current_station = route.all_station[@index_station].add_train(self) if @index_station >= 0
   end
 
   def station_info(route)

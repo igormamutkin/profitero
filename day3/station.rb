@@ -13,7 +13,7 @@ class Station
   	@trains << train
   end
 
-  def get_trains
+  def show_trains
   	puts @trains.to_s
   end
 
