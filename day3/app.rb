@@ -52,7 +52,7 @@ station2.show_trains
 
 puts "\nПокажем ближайшие станции поезда\n "
 
-train1.station_info
+train1.near_station_info
 
 #Дальше реализация простых методов
 
@@ -78,8 +78,7 @@ station4.add_train(train2)
 station4.add_train(train3)
 station4.add_train(train4)
 
-
-station4.get_trains_by_type("Грузовой")
+station4.get_trains_by_type("ГРУЗОвОЙ")
 
 
 

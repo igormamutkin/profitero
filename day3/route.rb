@@ -17,7 +17,7 @@ class Route
   end
 
   def list_station
-  	 @all_station.each {|flag| flag.to_s}
+  	 @all_station.each {|flag| flag.station_info}
   end
 
 end

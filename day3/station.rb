@@ -19,25 +19,16 @@ class Station
   end
 
   def get_trains_by_type(type)
-  	result = []
-  	if type.downcase.eql?("грузовой")
-  	  @trains.each do |train|
-  	    result << train if train.type.downcase.eql?("грузовой")
-  	  end
-  	else 
-  	  @trains.each do |train|
-  	    result << train if train.type.downcase.eql?("пассажирский")
-  	  end
-    end
-    result.each {|flag| flag.to_s}
+  	result = @trains.select {|flag| flag.type.downcase.eql?(type.downcase)}
+  	result.each {|flag| flag.train_info}
   end
 
   def send_train(train)
     @trains.delete(train)
   end
 
-  def to_s
-  	puts "Станция номер - #{@name}"
+  def station_info
+  	puts "Станция - #{@name}"
   end
 
 end
