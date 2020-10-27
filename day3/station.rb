@@ -2,22 +2,23 @@ require_relative 'train.rb'
 
 class Station
 
+  attr_accessor :name
+
   def initialize(name)
 	@name = name
 	@trains = []
   end
-
-  attr_accessor :name
 
   def add_train(train)
   	@trains << train
   end
 
   def show_trains
-  	puts @trains.to_s
+  	@trains.each {|flag| puts "На станции #{@name} находится поезд - #{flag.number} "}
+  	puts "На станции #{name} нет поездов" if @trains.length == 0
   end
 
-  def get_trains_for_type(type)
+  def get_trains_by_type(type)
   	result = []
   	if type.downcase.eql?("грузовой")
   	  @trains.each do |train|
@@ -28,11 +29,15 @@ class Station
   	    result << train if train.type.downcase.eql?("пассажирский")
   	  end
     end
-    puts result.to_s
+    result.each {|flag| flag.to_s}
   end
 
   def send_train(train)
     @trains.delete(train)
+  end
+
+  def to_s
+  	puts "Станция номер - #{@name}"
   end
 
 end

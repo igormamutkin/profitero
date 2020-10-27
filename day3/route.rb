@@ -1,14 +1,12 @@
 require_relative 'station.rb'
 
 class Route
-  
-  def initialize(first_station, last_station)
-  	@first_station = first_station
-  	@last_station = last_station
-  	@all_station = [@first_station, @last_station]
-  end
 
   attr_accessor :first_station, :last_station, :all_station
+
+  def initialize(first_station, last_station)
+  	@all_station = [@first_station = first_station, @last_station = last_station]
+  end
 
   def add_station(station)
   	@all_station.insert(@all_station.length - 1, station)
@@ -19,7 +17,7 @@ class Route
   end
 
   def list_station
-  	puts @all_station.each {|flag| puts flag.name}
+  	 @all_station.each {|flag| flag.to_s}
   end
 
 end
