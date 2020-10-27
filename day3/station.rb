@@ -2,7 +2,7 @@ require_relative 'train.rb'
 
 class Station
 
-  attr_accessor :name
+  attr_reader :name
 
   def initialize(name)
 	@name = name
@@ -15,7 +15,7 @@ class Station
 
   def show_trains
   	@trains.each {|flag| puts "На станции #{@name} находится поезд - #{flag.number} "}
-  	puts "На станции #{name} нет поездов" if @trains.length == 0
+  	puts "На станции #{name} нет поездов" if @trains.empty?
   end
 
   def get_trains_by_type(type)

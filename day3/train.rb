@@ -3,18 +3,19 @@ require_relative 'route.rb'
 
 class Train
 
-  attr_accessor :number, :type, :number_car, :speed, :current_station, :route
+	attr_reader :number, :type
+ 	attr_accessor :number_car, :speed, :current_station, :route
 
-  def initialize(number, type, number_car)
-  	@number = number
-    if type.downcase.eql?("грузовой") || type.downcase.eql?("пассажирский")
-      @type = type
-      else
-      puts "Неправильный тип поезда" 
-    end
-  	@number_car = number_car  
-  	@speed = 0
-  end
+	def initialize(number, type, number_car)
+		@number = number
+		if type.downcase.eql?("грузовой") || type.downcase.eql?("пассажирский")
+			@type = type
+			else
+			puts "Неправильный тип поезда" 
+		end
+		@number_car = number_car  
+ 		@speed = 0
+	end
 
   def pick_up_speed(value)
   	@speed+=value
