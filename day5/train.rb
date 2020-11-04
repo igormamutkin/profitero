@@ -1,14 +1,27 @@
 require_relative 'station'
 require_relative 'route'
+require_relative 'manufacturer'
+require_relative 'instanceCounter'
 
 class Train
   attr_reader :number
   attr_accessor :speed, :current_station, :route, :array_carriage
 
+  @@array_trains = {}
+
+  include Manufacturer
+  include InstanceCounter
+
   def initialize(number)
     @number = number
     @speed = 0
     @array_carriage = []
+    @@array_trains[number] = self
+    register_instance(self.class)
+  end
+
+  def self.find(number)
+    @@array_trains[number].train_info if @@array_trains.has_key?(number)
   end
 
   def pick_up_speed(value)
@@ -68,7 +81,11 @@ class Train
   end
 
   def train_info
-    print "Поезд номер - #{@number}, скорость - #{@speed}"
+    puts "Поезд номер - #{@number}, скорость - #{@speed}"
+  end
+
+  def show_module
+    puts InstanceCounter.instances(self.class)
   end
 
   private

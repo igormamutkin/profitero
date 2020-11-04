@@ -1,4 +1,4 @@
-class PassengerCarriage
+class PassengerCarriage < Carriage
   attr_reader :type
 
   def initialize

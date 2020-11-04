@@ -1,4 +1,4 @@
-class CargoCarriage
+class CargoCarriage < Carriage
   attr_reader :type
 
   def initialize
